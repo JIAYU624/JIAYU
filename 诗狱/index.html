@@ -76,9 +76,7 @@
             margin: 0;
             padding: 0;
             background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: block;
             height: 100vh;
             font-family: 'Noto Serif SC', serif;
             user-select: none;
@@ -88,6 +86,8 @@
         #game-container {
             width: 900px;
             height: 600px;
+            transform-origin: top left;
+        }
             background-color: var(--bg-color);
             position: relative;
             box-shadow: 0 0 50px rgba(0,0,0,1);
@@ -2304,6 +2304,19 @@
     };
 
     loadScene('title');
+
+    function scaleGame() {
+        const container = document.getElementById('game-container');
+        const scaleX = window.innerWidth / 900;
+        const scaleY = window.innerHeight / 600;
+        const scale = Math.min(scaleX, scaleY);
+        container.style.transform = `scale(${scale})`;
+        container.style.marginLeft = ((window.innerWidth - 900 * scale) / 2) + 'px';
+        container.style.marginTop = ((window.innerHeight - 600 * scale) / 2) + 'px';
+    }
+    scaleGame();
+    window.addEventListener('resize', scaleGame);
+    window.addEventListener('orientationchange', () => setTimeout(scaleGame, 300));
 
 </script>
 </body>

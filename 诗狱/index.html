@@ -544,10 +544,39 @@
         }
         .close-poem-btn:hover { transform: scale(1.2); }
 
+        #rotate-tip {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 18px;
+            letter-spacing: 3px;
+            text-align: center;
+            gap: 20px;
+        }
+        @media (orientation: portrait) {
+            #rotate-tip { display: flex; }
+        }
+        @media (orientation: landscape) {
+            #rotate-tip { display: none; }
+        }
+
     </style>
 </head>
 <body>
 
+<div id="rotate-tip">
+    <div style="font-size:48px;">↻</div>
+    <div>请旋转手机至横屏</div>
+    <div style="font-size:14px; color:#666; margin-top:10px;">Please rotate your device to landscape</div>
+</div>
 <div id="game-container">
     <div id="scene-layer"></div>
     <div id="inventory-layer"></div>

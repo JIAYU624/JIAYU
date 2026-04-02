@@ -76,7 +76,9 @@
             margin: 0;
             padding: 0;
             background-color: #000;
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             font-family: 'Noto Serif SC', serif;
             user-select: none;
@@ -86,8 +88,7 @@
         #game-container {
             width: 900px;
             height: 600px;
-            transform-origin: top left;
-        }
+            transform-origin: center center;
             background-color: var(--bg-color);
             position: relative;
             box-shadow: 0 0 50px rgba(0,0,0,1);
@@ -2311,8 +2312,6 @@
         const scaleY = window.innerHeight / 600;
         const scale = Math.min(scaleX, scaleY);
         container.style.transform = `scale(${scale})`;
-        container.style.marginLeft = ((window.innerWidth - 900 * scale) / 2) + 'px';
-        container.style.marginTop = ((window.innerHeight - 600 * scale) / 2) + 'px';
     }
     scaleGame();
     window.addEventListener('resize', scaleGame);
